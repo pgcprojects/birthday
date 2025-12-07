@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ask Her Out</title>
+
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      body {
+        background: linear-gradient(135deg, #f8e1f4, #e0c3f7, #c2e6ff);
+        background-size: 400% 400%;
+        animation: gradientBackground 15s ease infinite;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+      @keyframes gradientBackground {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .floating-element {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0.7;
+        z-index: 1;
+        animation-name: float;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      @keyframes float {
+        0% { transform: translateY(0) rotate(0deg); }
+        100% { transform: translateY(-20px) rotate(5deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 30px;">
+        <img src="party5.gif" alt="Party GIF" style="max-width:320px; width:100%; border-radius:20px; box-shadow:0 4px 24px rgba(0,0,0,0.15);">
+      </div>
+      <h1>Hehehehe, I knew it! Tu intni kanjus bhi nahi he 😁</h1>
+      <div style="text-align:center; margin-top: 40px;">
+        <a href="final.html" class="next-button" style="display:inline-block; padding:12px 36px; background:linear-gradient(45deg,#ffb6c1,#a18cd1); color:#fff; border:none; border-radius:30px; font-size:1.2rem; font-weight:bold; text-decoration:none; box-shadow:0 4px 16px rgba(161,140,209,0.2); transition:all 0.3s;">
+          Ab Idhar Click Kar Motu <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const floatingElements = [
+          { type: 'heart', color: '#ff6b8a', size: '24px' },
+          { type: 'star', color: '#ffd54f', size: '22px' },
+          { type: 'heart', color: '#f48fb1', size: '28px' },
+          { type: 'star', color: '#ffecb3', size: '18px' },
+          { type: 'teddy', emoji: '🧸', size: '28px' },
+          { type: 'sparkle', emoji: '✨', size: '22px' },
+          { type: 'heart', color: '#ff6b8a', size: '20px' },
+          { type: 'star', color: '#ffd54f', size: '20px' },
+          { type: 'teddy', emoji: '🧸', size: '24px' }
+        ];
+        floatingElements.forEach((element, index) => {
+          const floatingElement = document.createElement('div');
+          floatingElement.classList.add('floating-element');
+          if (element.emoji) {
+            floatingElement.textContent = element.emoji;
+            floatingElement.style.fontSize = element.size;
+          } else if (element.type === 'heart') {
+            floatingElement.innerHTML = '<i class="fas fa-heart"></i>';
+            floatingElement.style.color = element.color;
+            floatingElement.style.fontSize = element.size;
+          } else if (element.type === 'star') {
+            floatingElement.innerHTML = '<i class="fas fa-star"></i>';
+            floatingElement.style.color = element.color;
+            floatingElement.style.fontSize = element.size;
+          }
+          const randomX = Math.random() * window.innerWidth;
+          const randomY = Math.random() * window.innerHeight;
+          floatingElement.style.left = `${randomX}px`;
+          floatingElement.style.top = `${randomY}px`;
+          const duration = 5 + Math.random() * 10;
+          const delay = Math.random() * 5;
+          floatingElement.style.animationDuration = `${duration}s`;
+          floatingElement.style.animationDelay = `${delay}s`;
+          document.body.appendChild(floatingElement);
+        });
+      });
+    </script>
+  </body>
+</html>
